@@ -1,0 +1,5 @@
+case,purpose
+normal_case,normal prediction
+high_risk_case,high-risk prediction
+failure_missing_field,error handling
+failure_invalid_speed,error handling
