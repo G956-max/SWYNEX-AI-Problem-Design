@@ -1,40 +1,26 @@
-# SWYNEX Task 3 - SafeRoute AI
+# SWYNEX Task 3 - SafeRoute AI: Intelligent Feature
 
-## Intelligent Feature
+This continues the existing Task 1 and Task 2 repository.
 
-Task 3 continues the SafeRoute AI prototype from Tasks 1 and 2.
+## Added in Task 3
 
-### Intelligent feature
-The prototype does more than return a risk label. It tests each input against a safer reference value and reports features whose change can alter the predicted risk class.
+- Model evaluation: accuracy, precision, recall, F1 score, confusion matrix.
+- Input validation: required fields, category values, numeric speed, speed range.
+- Failure demonstrations: missing field, invalid speed, invalid category.
+- Intelligent analysis:
+  - human-readable summary of all observed conditions;
+  - global feature importance measured by permutation importance on the held-out test set;
+  - one-feature-at-a-time what-if checks against a defined safer reference profile.
 
-### Error handling
-The prototype handles:
-- missing required fields
-- invalid category values
-- non-numeric speed
-- speed outside 0-200 km/h
-
-### Evaluation
-The script reports:
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-
-It also demonstrates:
-1. normal input
-2. high-risk input
-3. missing-field failure
-4. invalid-speed failure
-
-### Run
-
-From repository root:
+## Run from the repository root
 
 ```bash
 pip install pandas scikit-learn
-python task3/task3.py
+python "intelligent feature/task3/task3.py"
 ```
 
-The dataset is synthetic and the explanation is a prototype-level counterfactual explanation, not proof of causation or a real-world safety decision.
+The dataset path is resolved from the script location, so the script expects the repository structure to remain intact.
+
+## Interpretation and limitations
+
+The dataset is synthetic. Reported metrics measure agreement with synthetic labels, not real-world accident prediction performance. Global feature importance is not causal evidence. Safer-reference checks are model what-if tests and are not safety guarantees.

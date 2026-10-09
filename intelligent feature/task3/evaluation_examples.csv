@@ -1,5 +1,6 @@
-case,purpose
-normal_case,normal prediction
-high_risk_case,high-risk prediction
-failure_missing_field,error handling
-failure_invalid_speed,error handling
+case,purpose,expected_behavior
+normal_case,valid normal input,return prediction and analysis
+high_risk_case,valid challenging input,return prediction and analysis
+failure_missing_field,missing required vehicle speed,clear validation error
+failure_invalid_speed,speed above permitted range,clear validation error
+failure_invalid_category,unknown weather category,clear validation error

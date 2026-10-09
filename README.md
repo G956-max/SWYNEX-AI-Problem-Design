@@ -1,153 +1,50 @@
 # SWYNEX - SafeRoute AI
 
-## AI Problem Design
+SafeRoute AI is a learning prototype that classifies road-condition records into Low, Medium, or High risk categories.
 
-### 1. Problem Statement
+## Repository progression
 
-Road accidents can be influenced by multiple factors such as weather,
-traffic density, road condition, visibility, vehicle speed, time of day,
-and road type.
+- **Task 1 — AI Problem Design:** problem statement and synthetic dataset.
+- **Task 2 — Model/API Integration:** Random Forest classifier and FastAPI `/predict` endpoint.
+- **Task 3 — Intelligent Feature:** evaluation metrics, input validation, failure cases, observed-condition summary, global permutation importance, and safer-reference what-if checks.
 
-SafeRoute AI is designed to classify the current road situation into
-three accident-risk levels:
+## Structure
 
-- Low Risk
-- Medium Risk
-- High Risk
+```text
+SWYNEX-AI-Problem-Design/
+├── dataset/
+│   └── road_risk_data.csv
+├── Swynex API/
+│   ├── saferoute_task2.py
+│   ├── saferoute_risk_model.joblib
+│   └── README.md
+└── intelligent feature/
+    └── task3/
+        ├── task3.py
+        ├── README.md
+        └── evaluation_examples.csv
+```
 
-The system uses structured road, traffic, weather, and vehicle-related
-features to estimate the current accident-risk level.
+## Task 2: run the API
 
-The objective is to provide an early risk indication that can support
-safer driving and traffic-management decisions.
+From the repository root:
 
----
+```bash
+pip install pandas scikit-learn joblib fastapi uvicorn
+python "Swynex API/saferoute_task2.py"
+```
 
-## 2. Target Users
+Open `http://127.0.0.1:8000/docs` and test `POST /predict`.
 
-The proposed system can be useful for:
+## Task 3: run evaluation and intelligent analysis
 
-- Drivers
-- Traffic management teams
-- Road safety researchers
-- Fleet operators
+From the repository root:
 
----
+```bash
+pip install pandas scikit-learn
+python "intelligent feature/task3/task3.py"
+```
 
-## 3. AI Task
+## Important limitations
 
-This is a multi-class classification problem.
-
-### Input
-
-The model receives:
-
-- Weather condition
-- Traffic density
-- Road condition
-- Visibility
-- Vehicle speed
-- Time of day
-- Road type
-
-### Output
-
-The model predicts:
-
-- Low Risk
-- Medium Risk
-- High Risk
-
----
-
-## 4. Data Source
-
-A small structured dataset will be used for the initial prototype.
-
-The dataset contains simulated/anonymized road-condition records
-created for demonstrating the AI problem.
-
-No personally identifiable information is required.
-
----
-
-## 5. Example Input
-
-| Feature | Example |
-|---|---|
-| Weather | Heavy Rain |
-| Traffic Density | High |
-| Road Condition | Wet |
-| Visibility | Low |
-| Vehicle Speed | 80 km/h |
-| Time of Day | Night |
-| Road Type | Highway |
-
-### Expected Output
-
-**High Risk**
-
----
-
-## 6. Constraints
-
-The initial system has the following limitations:
-
-- The prototype uses a small dataset.
-- Risk prediction depends on the quality of input data.
-- Simulated data may not represent every real-world road condition.
-- The system provides a risk indication and does not guarantee that
-  an accident will or will not occur.
-- Real-time traffic and weather data are not included in the initial
-  version.
-
----
-
-## 7. Evaluation Approach
-
-The classification system will be evaluated using:
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-
-Special attention will be given to recall for the High Risk class,
-because failing to identify a high-risk situation can reduce the
-usefulness of the system.
-
----
-
-## 8. Success Criteria
-
-The system will be considered successful if it:
-
-1. Correctly classifies road situations into risk categories.
-2. Achieves reasonable performance on unseen test data.
-3. Provides useful identification of High Risk situations.
-4. Handles missing or invalid input safely.
-5. Produces understandable risk predictions.
-
----
-
-## 9. Expected Outcome
-
-The expected outcome is a lightweight AI-based road-risk classification
-prototype that can later be extended with real-time weather data,
-traffic information, vehicle sensors, alerts, and a web dashboard.
-
----
-
-## 10. Future Scope
-
-Future versions may include:
-
-- Real-time weather API
-- Real-time traffic information
-- Vehicle sensor integration
-- GPS-based risk mapping
-- Driver alerts
-- Risk heatmaps
-- Web dashboard
-- Mobile application
+The dataset and its labels are synthetic. Evaluation scores show performance against those generated labels; they must not be represented as validated real-world road-safety performance. The prototype is not suitable for real-world safety decisions.
