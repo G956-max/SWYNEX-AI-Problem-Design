@@ -48,3 +48,15 @@ python "intelligent feature/task3/task3.py"
 ## Important limitations
 
 The dataset and its labels are synthetic. Evaluation scores show performance against those generated labels; they must not be represented as validated real-world road-safety performance. The prototype is not suitable for real-world safety decisions.
+
+
+## Task 4 — Final AI Application
+
+The responsive web app is in `task4/`. See `task4/README.md` for setup instructions.
+
+```bash
+python -m pip install -r task4/requirements.txt
+python -m uvicorn task4.app:app --reload
+```
+
+Open `http://127.0.0.1:8000`.
